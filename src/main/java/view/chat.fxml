@@ -17,7 +17,7 @@
       <Button fx:id="btn_send" layoutX="923.0" layoutY="677.0" mnemonicParsing="false" text="send" AnchorPane.leftAnchor="923.0" />
       <ScrollPane fx:id="scrollPane_history" layoutX="346.0" layoutY="2.0" prefHeight="443.0" prefWidth="638.0">
          <content>
-            <FlowPane fx:id="messageList" prefHeight="75.0" prefWidth="417.0" />
+            <FlowPane fx:id="messageList" prefHeight="45.0" prefWidth="366.0" />
          </content>
       </ScrollPane>
    </children>
