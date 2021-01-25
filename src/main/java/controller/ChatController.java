@@ -54,12 +54,13 @@ public class ChatController implements Initializable {
     }
 
 
-
     private void addMessageBox(String[] message) {//socket要给我一个数组里面存了谁发的，发给谁，发什么。调用这个方法就可以实现消息盒子的更新了
         Label messageFromWho = new Label(message[0]);
         messageFromWho.setWrapText(true);
         messageFromWho.setMaxWidth(220);
-
+        messageFromWho.setPadding(new Insets(6));
+        messageFromWho.setFont(new Font(14));
+        HBox.setMargin(messageFromWho, new Insets(8, 0, 0, 0));
 
         Label messageBubble = new Label(message[2]);
         messageBubble.setWrapText(true);
@@ -84,11 +85,13 @@ public class ChatController implements Initializable {
                     10.0, 5.0
             };
         }
+
         Polygon triangle = new Polygon(points);
         triangle.setFill(Color.rgb(179,231,244));
         HBox messageBox = new HBox();
         messageBox.setPrefWidth(366);
         messageBox.setPadding(new Insets(10, 5, 10, 5));
+
         if (isMine) {
             HBox.setMargin(triangle, new Insets(15, 10, 0, 0));
             messageBox.getChildren().addAll(messageBubble, triangle, messageFromWho);
