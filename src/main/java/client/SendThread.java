@@ -30,7 +30,7 @@ public class SendThread extends Thread {
         this.user1 = user1_;
     }
 
-    public void run(){
+    public void run(){//
         if(type == 1){
             sendLogIn();
         }else if (type == 2){

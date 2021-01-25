@@ -14,7 +14,7 @@ public class ReceiveThread extends Thread {
     public static Socket socket;
 
     public void run() {
-        try {
+        try {//
             InputStream in = socket.getInputStream();
             BufferedReader reader;
             reader = new BufferedReader(new InputStreamReader(in));
