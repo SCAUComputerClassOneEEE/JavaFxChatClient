@@ -17,7 +17,7 @@
             <Font name="System Bold" size="29.0" />
          </font>
       </Text>
-      <Button fx:id="btn_clear" layoutX="443.0" layoutY="309.0" mnemonicParsing="false" text="clear" />
-      <Button fx:id="btn_login" layoutX="356.0" layoutY="309.0" mnemonicParsing="false" text="login" />
+      <Button fx:id="btn_clear" layoutX="443.0" layoutY="309.0" mnemonicParsing="false" text="clear" onMouseClicked="#clear"/>
+      <Button fx:id="btn_login" layoutX="356.0" layoutY="309.0" mnemonicParsing="false" text="login" onMouseClicked="#login"/>
    </children>
 </AnchorPane>

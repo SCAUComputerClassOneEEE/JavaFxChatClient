@@ -65,12 +65,13 @@ public class SendThread extends Thread {
         }
     }
 
-    private void sendLogIn() {
+    public void sendLogIn() {
+
         try {
             PrintWriter pw = new PrintWriter(socket.getOutputStream());
             pw.write("N/"+userName+"/"+password+"\n");
             pw.flush();
-
+            System.out.println(userName+"登录成功！");
         }catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
