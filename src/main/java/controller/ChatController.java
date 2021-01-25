@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.application.Platform;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -101,4 +103,37 @@ public class ChatController implements Initializable {
         last = scrollPane_history.getVvalue() == 1.0;
         messageList.getChildren().add(messageBox);
     }
+
+
+
+    /**
+     * sky's workspace
+     */
+    @FXML
+    private VBox leftPane;//左边的用户框
+
+    //整型监听器，每当用户列表改变时，这个变量+1，就可以触发监听线程
+    public SimpleObjectProperty<Integer> leftPaneListener = new SimpleObjectProperty<Integer>(0);
+
+    /**
+     * 给leftPaneListener添加监听器
+     */
+    private void addListener2leftPaneListener(){
+        leftPaneListener.addListener(((observable, oldValue, newValue) -> {
+            Platform.runLater(this::upDateLeftPane);
+        }));
+    }
+
+    private void upDateLeftPane(){
+        /*
+        根据users列表更新子节点
+         */
+        /*
+        例子：
+        leftPane.clear()
+        for() userList
+        leftPane.add(Node)
+         */
+    }
+
 }
