@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.application.Platform;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -19,6 +21,7 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.text.Font;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ChatController implements Initializable {
@@ -104,4 +107,74 @@ public class ChatController implements Initializable {
         last = scrollPane_history.getVvalue() == 1.0;
         messageList.getChildren().add(messageBox);
     }
+
+
+
+    /**
+     * sky's workspace
+     */
+    @FXML
+    private VBox leftPane;//左边的用户框
+
+    //整型监听器，每当用户列表改变时，这个变量+1，就可以触发监听线程
+    public static SimpleObjectProperty<Integer> leftPaneListener = new SimpleObjectProperty<Integer>(0);
+    public static String memberName = null;
+    public static String changeType = null;
+    /**
+     * 给leftPaneListener添加监听器
+     */
+    private void addListener2leftPaneListener(){
+        leftPaneListener.addListener(((observable, oldValue, newValue) -> {
+            Platform.runLater(this::upDateLeftPane);
+        }));
+    }
+
+    /*
+    假定有一个存放所有user名字的list
+     */
+    private ArrayList<String> memberNameList = new ArrayList<>();
+    private void upDateLeftPane(){
+        /*
+        根据users列表更新子节点
+         */
+        //处理节点位置
+        switch (changeType) {
+            case "用户上线"://新增
+                memberNameList.add(0,memberName);
+                break;
+            case "用户下线"://移除
+                memberNameList.remove(memberName);
+                break;
+            case "收到消息"://移到前面
+                memberNameList.remove(memberName);
+                memberNameList.add(0,memberName);
+                break;
+        }
+        //更新界面
+        fillMember(memberName);
+    }
+
+    /**
+     * 加载节点 memberName用于收到消息时，给memberName对应的节点标红
+     * @param memberName
+     */
+    private void fillMember(String memberName){
+        //先清空所有节点
+        leftPane.getChildren().clear();
+        for(int i=0;i<memberNameList.size();i++){
+            Button eachMember = new Button(memberNameList.get(i));
+            eachMember.setStyle("-fx-background-color: gray");
+            if (eachMember.getText().equals(memberName)){
+                eachMember.setStyle("-fx-background-color: red");
+            }
+            eachMember.setOnAction(event -> {
+                eachMember.setStyle("-fx-background-color: gray");
+                /*
+                这里用于点击事件，加载聊天框
+                 */
+            });
+            leftPane.getChildren().add(eachMember);
+        }
+    }
+
 }
