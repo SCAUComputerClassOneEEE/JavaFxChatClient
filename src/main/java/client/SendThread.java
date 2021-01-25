@@ -6,7 +6,7 @@ import java.net.Socket;
 
 public class SendThread extends Thread {
     public static Socket socket;
-    private int type;//1是发送登录信息，2是发送聊天信息，3是发送下线信息
+    private int type;//1是发送登录信息，2是发送聊天信息，3是发送下线信息//
     private String userName = null;
     private String password = null;
     private String user1 = null;
@@ -43,7 +43,7 @@ public class SendThread extends Thread {
     private void sendLogOut() {
         try {
             PrintWriter pw = new PrintWriter(socket.getOutputStream());
-            pw.write("W/"+user1+"\n");
+            pw.write("W##"+user1+"\n");
             pw.flush();
 
         }catch (IOException e) {
@@ -56,7 +56,7 @@ public class SendThread extends Thread {
     private void sendMessage() {
         try {
             PrintWriter pw = new PrintWriter(socket.getOutputStream());
-            pw.write("Y/"+user1+"/"+user2+"/"+message+"\n");
+            pw.write("Y##"+user1+"##"+user2+"##"+message+"\n");
             pw.flush();
 
         }catch (IOException e) {
@@ -69,7 +69,7 @@ public class SendThread extends Thread {
 
         try {
             PrintWriter pw = new PrintWriter(socket.getOutputStream());
-            pw.write("N/"+userName+"/"+password+"\n");
+            pw.write("N##"+userName+"##"+password+"\n");
             pw.flush();
             System.out.println(userName+"登录成功！");
         }catch (IOException e) {
@@ -80,7 +80,7 @@ public class SendThread extends Thread {
 
     public static void main(String[] args) throws IOException{
 
-                socket = new Socket("169.254.40.2", 6666);
+        socket = new Socket("169.254.40.2", 6666);
 
-        }
+    }
 }
