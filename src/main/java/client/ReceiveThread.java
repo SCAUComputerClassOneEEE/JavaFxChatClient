@@ -72,7 +72,9 @@ public class ReceiveThread extends Thread {
 
         chatController.addMessageBox(message);
         //chatController.leftPaneListener++ ;我是笨逼 我不会加一
-
+        ChatController.leftPaneListener.setValue(ChatController.leftPaneListener.getValue()+1);
+        ChatController.changeType = "";//修改左边界面的原因：1新增用户 2用户下线 3用户发来消息
+        ChatController.memberName = "";//改变的那个用户的名字
         //更新信息界面
     }
 
