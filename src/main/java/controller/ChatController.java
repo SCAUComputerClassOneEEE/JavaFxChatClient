@@ -61,6 +61,9 @@ public class ChatController extends Application implements Initializable  {
                 }
         });
         scrollPane_history.setVvalue(1);
+
+        //左边界面添加监听器
+        addListener2leftPaneListener();
     }
 
 
@@ -124,8 +127,8 @@ public class ChatController extends Application implements Initializable  {
 
     //整型监听器，每当用户列表改变时，这个变量+1，就可以触发监听线程
     public static SimpleObjectProperty<Integer> leftPaneListener = new SimpleObjectProperty<Integer>(0);
-    public static String memberName = null;
-    public static String changeType = null;
+    public static String memberName = null;//修改左边界面的原因：1新增用户 2用户下线 3用户发来消息
+    public static String changeType = null;//改变的那个用户的名字
 
     /**
      * 给leftPaneListener添加监听器
@@ -171,11 +174,12 @@ public class ChatController extends Application implements Initializable  {
         for(int i=0;i<memberNameList.size();i++){
             Button eachMember = new Button(memberNameList.get(i));
             eachMember.setStyle("-fx-background-color: gray");
-            if (eachMember.getText().equals(memberName)){
+            if (changeType.equals("收到消息") && eachMember.getText().equals(memberName)){
                 eachMember.setStyle("-fx-background-color: red");
             }
             eachMember.setOnAction(event -> {
                 eachMember.setStyle("-fx-background-color: gray");
+                // eachMember.getText();
                 /*
                 这里用于点击事件，加载聊天框
                  */
