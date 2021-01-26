@@ -1,13 +1,17 @@
 package controller;
 
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -19,12 +23,15 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ChatController implements Initializable {
+import static javafx.application.Application.launch;
+
+public class ChatController extends Application implements Initializable  {
 
     @FXML
     private Button btn_send;
@@ -176,5 +183,21 @@ public class ChatController implements Initializable {
             leftPane.getChildren().add(eachMember);
         }
     }
+
+
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader();
+        System.out.println(getClass().getClassLoader().getResource("chat.fxml"));
+        loader.setLocation(getClass().getClassLoader().getResource("chat.fxml"));
+        Parent root  = loader.load();
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
 
 }
