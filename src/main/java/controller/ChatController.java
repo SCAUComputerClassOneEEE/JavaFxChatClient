@@ -57,13 +57,12 @@ public class ChatController implements Initializable {
     }
 
 
-    private void addMessageBox(String[] message) {//socket要给我一个数组里面存了谁发的，发给谁，发什么。调用这个方法就可以实现消息盒子的更新了
+
+    public void addMessageBox(String[] message) {//socket要给我一个数组里面存了谁发的，发给谁，发什么。调用这个方法就可以实现消息盒子的更新了
         Label messageFromWho = new Label(message[0]);
         messageFromWho.setWrapText(true);
         messageFromWho.setMaxWidth(220);
-        messageFromWho.setPadding(new Insets(6));
-        messageFromWho.setFont(new Font(14));
-        HBox.setMargin(messageFromWho, new Insets(8, 0, 0, 0));
+
 
         Label messageBubble = new Label(message[2]);
         messageBubble.setWrapText(true);
@@ -120,6 +119,7 @@ public class ChatController implements Initializable {
     public static SimpleObjectProperty<Integer> leftPaneListener = new SimpleObjectProperty<Integer>(0);
     public static String memberName = null;
     public static String changeType = null;
+
     /**
      * 给leftPaneListener添加监听器
      */

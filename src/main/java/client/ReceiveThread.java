@@ -43,13 +43,13 @@ public class ReceiveThread extends Thread {
     }
 
     private void logIn(String str) {
-        if(str.equals("N##N")){
+        if(str.equals("N,N")){
 
             //显示登录失败信息
 
         }else {//初始化在线用户
             str = str.substring(3,str.length());//删除标识N##
-            String[] olineUserList = str.split("##");//olineUserList是在线用户列表，用于初始化
+            String[] olineUserList = str.split(",");//olineUserList是在线用户列表，用于初始化
 
             //登录成功，显示上线信息
         }
@@ -64,7 +64,7 @@ public class ReceiveThread extends Thread {
 
     private void updataChat(String str) {
         str = str.substring(3,str.length());//删除标识Y##
-        String[] message = str.split("##");
+        String[] message = str.split(",");
         /*
         message[0]是发送者的标识
         message[1]是发送的消息//
@@ -79,7 +79,7 @@ public class ReceiveThread extends Thread {
 
 
     public static void main(String[] args) throws UnknownHostException, IOException {
-        socket = new Socket("169.254.40.2",6666);//端口号？
+        socket = new Socket("169.254.73.36", 12705);//端口号？
 
     }
 }

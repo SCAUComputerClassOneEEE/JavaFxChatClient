@@ -43,7 +43,8 @@ public class SendThread extends Thread {
     private void sendLogOut() {
         try {
             PrintWriter pw = new PrintWriter(socket.getOutputStream());
-            pw.write("W##"+user1+"\n");
+            pw.write("W,"+user1);
+            pw.write("W,"+user1);
             pw.flush();
 
         }catch (IOException e) {
@@ -56,7 +57,7 @@ public class SendThread extends Thread {
     private void sendMessage() {
         try {
             PrintWriter pw = new PrintWriter(socket.getOutputStream());
-            pw.write("Y##"+user1+"##"+user2+"##"+message+"\n");
+            pw.write("Y,"+user1+","+user2+","+message);
             pw.flush();
 
         }catch (IOException e) {
@@ -69,7 +70,7 @@ public class SendThread extends Thread {
 
         try {
             PrintWriter pw = new PrintWriter(socket.getOutputStream());
-            pw.write("N##"+userName+"##"+password+"\n");
+            pw.write("N,"+userName+","+password);
             pw.flush();
             System.out.println(userName+"登录成功！");
         }catch (IOException e) {
@@ -80,7 +81,7 @@ public class SendThread extends Thread {
 
     public static void main(String[] args) throws IOException{
 
-        socket = new Socket("169.254.40.2", 6666);
+        socket = new Socket("169.254.73.36", 12705);
 
     }
 }

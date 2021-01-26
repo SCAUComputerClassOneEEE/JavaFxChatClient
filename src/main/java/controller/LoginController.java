@@ -12,6 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.net.Socket;
+
 import static javafx.application.Application.launch;
 
 public class LoginController extends Application {
@@ -24,8 +27,10 @@ public class LoginController extends Application {
 	@FXML
 	private Button btn_login;
 
+
 	@FXML
-	private void login() {  //登录
+	private void login() throws IOException {  //登录
+		SendThread.socket = new Socket("169.254.73.36", 12705);
 		String username = text_username.getText();
 		String password = text_password.getText();
 		SendThread sendThread1 = new SendThread(1, username, password); //type为1是发送登录信息

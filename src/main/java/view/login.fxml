@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <TextField fx:id="text_password" layoutX="223.0" layoutY="185.0" />
@@ -17,7 +16,7 @@
             <Font name="System Bold" size="29.0" />
          </font>
       </Text>
-      <Button fx:id="btn_clear" layoutX="443.0" layoutY="309.0" mnemonicParsing="false" text="clear" onMouseClicked="#clear"/>
-      <Button fx:id="btn_login" layoutX="356.0" layoutY="309.0" mnemonicParsing="false" text="login" onMouseClicked="#login"/>
+      <Button fx:id="btn_clear" layoutX="443.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#clear" text="clear" />
+      <Button fx:id="btn_login" layoutX="356.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#login" text="login" />
    </children>
 </AnchorPane>
