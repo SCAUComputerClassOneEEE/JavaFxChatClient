@@ -33,8 +33,8 @@ public class LoginController  {
 
 	@FXML
 	private void login() throws Exception {  //登录
-		SendThread.socket = new Socket("169.254.73.36", 12705);
-		ReceiveThread.socket = SendThread.socket;
+//		SendThread.socket = new Socket("169.254.73.36", 12705);
+//		ReceiveThread.socket = SendThread.socket;
 		String username = text_username.getText();
 		String password = text_password.getText();
 		ChatController.MyId=username;
