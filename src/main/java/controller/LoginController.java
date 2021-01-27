@@ -45,10 +45,8 @@ public class LoginController  {
 		 */
 		if (ReceiveThread.socket != null){
 			synchronized (ReceiveThread.class) {
-				System.out.println("wait for server");
 				ReceiveThread.class.wait();
 			}
-			System.out.println("unlock");
 			if (ReceiveThread.isLogin()){
 				new OpenAction(ChangeService.stage);
 			} else {
