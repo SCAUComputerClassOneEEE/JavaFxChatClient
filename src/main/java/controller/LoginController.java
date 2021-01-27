@@ -39,13 +39,25 @@ public class LoginController  {
 		String password = text_password.getText();
 		ChatController.MyId=username;
 		SendThread sendThread1 = new SendThread(1, username, password); //type为1是发送登录信息
-		ReceiveThread receiveThread = new ReceiveThread();
-		receiveThread.start();
 		sendThread1.sendLogIn();
 		/**
-		 * 先接受服务器的回信再进入Chat
+		 * 先阻塞等待服务器的回信再进入Chat
 		 */
-        new OpenAction(ChangeService.stage);
+		if (ReceiveThread.socket != null){
+			synchronized (ReceiveThread.class) {
+				System.out.println("wait for server");
+				ReceiveThread.class.wait();
+			}
+			System.out.println("unlock");
+			if (ReceiveThread.isLogin()){
+				new OpenAction(ChangeService.stage);
+			} else {
+				System.out.println("login failed");
+			}
+		} else {
+			System.out.println("login failed");
+		}
+
 	}
 
 	@FXML

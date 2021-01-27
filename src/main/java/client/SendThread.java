@@ -73,10 +73,13 @@ public class SendThread extends Thread {
             PrintWriter pw = new PrintWriter(socket.getOutputStream());
             pw.write("N,"+userName+","+password);
             pw.flush();
-            System.out.println(userName+"登录成功！");
+            ReceiveThread receiveThread = new ReceiveThread();
+            receiveThread.start();
+            //System.out.println(userName+"登录成功！");
         }catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.err.println("connection refuse!");
         }
     }
 /*

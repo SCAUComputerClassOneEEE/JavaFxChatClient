@@ -13,6 +13,11 @@ import java.net.UnknownHostException;
 public class ReceiveThread extends Thread {
     public static Socket socket;
     private ChatController chatController;
+    private static boolean isLoginSuccess = false;
+
+    public static boolean isLogin(){
+        return isLoginSuccess;
+    }
 
     public void run() {
         try {
@@ -20,9 +25,11 @@ public class ReceiveThread extends Thread {
             BufferedReader reader;
             reader = new BufferedReader(new InputStreamReader(in));
             String str;
+            char[] temp = new char[256];
             while (true) {
-                str = reader.readLine();//不断接收服务端发送的信息
-                if (str != null) {
+                int len = reader.read(temp);//不断接收服务端发送的信息
+                str = String.valueOf(temp);
+                if (len > 0) {
                     if (str.startsWith("Y")) {//更新信息
                         updataChat(str);
                     }
@@ -43,16 +50,20 @@ public class ReceiveThread extends Thread {
     }
 
     private void logIn(String str) {
-        if(str.equals("N,N")){
+        synchronized (ReceiveThread.class) {
+            if(str.equals("N,N")){
+                isLoginSuccess = false;
+                ReceiveThread.class.notifyAll();
+                //显示登录失败信息
 
-            //显示登录失败信息
-
-        }else {//初始化在线用户
-            str = str.substring(2,str.length());//删除标识  N,
-            String[] olineUserList = str.split(",");//olineUserList是在线用户列表，用于初始化
-
-            //登录成功，显示上线信息
-            ChatController.changeType = "用户上线";
+            }else {//初始化在线用户
+                str = str.substring(2,str.length());//删除标识  N,
+                String[] onlineUserList = str.split(",");//onlineUserList是在线用户列表，用于初始化
+                isLoginSuccess = true;
+                ReceiveThread.class.notifyAll();
+                //登录成功，显示上线信息
+                ChatController.changeType = "用户上线";
+            }
         }
     }
 

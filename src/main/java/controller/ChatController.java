@@ -176,7 +176,7 @@ public class ChatController  implements Initializable {
             Button eachMember = new Button(memberNameList.get(i));
             eachMember.setStyle("-fx-background-color: gray");
             if (changeType.equals("收到消息") && eachMember.getText().equals(memberName)) {
-                eachMember.setStyle("-fx-background-color: red");
+                eachMember.setStyle("-fx-background-color: #ff0000");
             }
             eachMember.setOnAction(event -> {
                 eachMember.setStyle("-fx-background-color: gray");
