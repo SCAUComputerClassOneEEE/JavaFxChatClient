@@ -7,6 +7,7 @@
 
 <AnchorPane prefHeight="740.0" prefWidth="1039.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChatController">
    <children>
+      <VBox fx:id="leftPane" prefHeight="626.0" prefWidth="336.0" />
       <TextArea fx:id="text_input" layoutX="346.0" layoutY="445.0" prefHeight="180.0" prefWidth="638.0" text="input.............." />
       <Button fx:id="btn_send" layoutX="923.0" layoutY="677.0" mnemonicParsing="false" text="send" AnchorPane.leftAnchor="923.0" />
       <ScrollPane fx:id="scrollPane_history" layoutX="346.0" layoutY="2.0" prefHeight="443.0" prefWidth="638.0">

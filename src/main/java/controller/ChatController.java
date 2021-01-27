@@ -28,6 +28,8 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 import static javafx.application.Application.launch;
@@ -141,7 +143,7 @@ public class ChatController  implements Initializable {
     /*
     假定有一个存放所有user名字的list
      */
-    private ArrayList<String> memberNameList = new ArrayList<>();
+    private final ArrayList<Button> memberNameList = new ArrayList<>(Collections.singletonList(new Button("all")));
 
     private void upDateLeftPane() {
         /*
@@ -150,14 +152,18 @@ public class ChatController  implements Initializable {
         //处理节点位置
         switch (changeType) {
             case "用户上线"://新增
-                memberNameList.add(0, memberName);
+                memberNameList.add(1, new Button(memberName));
                 break;
             case "用户下线"://移除
-                memberNameList.remove(memberName);
+                memberNameList.removeIf(each -> each.getText().equals(memberName));
                 break;
             case "收到消息"://移到前面
-                memberNameList.remove(memberName);
-                memberNameList.add(0, memberName);
+                if (! memberName.equals("all")){
+                    for (Button each:memberNameList){
+                        memberNameList.remove(each);
+                        memberNameList.add(1,each);
+                    }
+                }
                 break;
         }
         //更新界面
@@ -172,11 +178,10 @@ public class ChatController  implements Initializable {
     private void fillMember(String memberName) {
         //先清空所有节点
         leftPane.getChildren().clear();
-        for (int i = 0; i < memberNameList.size(); i++) {
-            Button eachMember = new Button(memberNameList.get(i));
+        for (Button eachMember : memberNameList) {
             eachMember.setStyle("-fx-background-color: gray");
             if (changeType.equals("收到消息") && eachMember.getText().equals(memberName)) {
-                eachMember.setStyle("-fx-background-color: #ff0000");
+                eachMember.setStyle("-fx-background-color: red");
             }
             eachMember.setOnAction(event -> {
                 eachMember.setStyle("-fx-background-color: gray");
