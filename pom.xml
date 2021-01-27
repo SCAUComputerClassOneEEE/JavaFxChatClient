@@ -16,6 +16,7 @@
                 </directory>
                 <includes>
                     <include>
+                        view/chat.fxml
                         view/login.fxml
                     </include>
                 </includes>
