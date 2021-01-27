@@ -77,10 +77,12 @@ public class SendThread extends Thread {
             e.printStackTrace();
         }
     }
-
+/*
     public static void main(String[] args) throws IOException{
 
         socket = new Socket("169.254.73.36", 12705);
 
     }
+
+ */
 }

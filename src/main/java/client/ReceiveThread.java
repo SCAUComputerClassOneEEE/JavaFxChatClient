@@ -48,7 +48,7 @@ public class ReceiveThread extends Thread {
             //显示登录失败信息
 
         }else {//初始化在线用户
-            str = str.substring(3,str.length());//删除标识N##
+            str = str.substring(2,str.length());//删除标识  N,
             String[] olineUserList = str.split(",");//olineUserList是在线用户列表，用于初始化
 
             //登录成功，显示上线信息
@@ -56,32 +56,35 @@ public class ReceiveThread extends Thread {
     }
 
     private void offLine(String str) {
-        str = str.substring(3,str.length());//删除标识W##
+        str = str.substring(2,str.length());//删除标识  W,
         //此时str是下线的用户的标识
 
         //显示下线信息
     }
 
     private void updataChat(String str) {
-        str = str.substring(3,str.length());//删除标识Y##
+        str = str.substring(2,str.length());//删除标识  Y,
         String[] message = str.split(",");
         /*
-        message[0]是发送者的标识
-        message[1]是发送的消息//
+        message[0]是接收者的标识
+        message[1]是发送者的标识
+        message[2]是发送的消息
          */
 
         chatController.addMessageBox(message);
-        //chatController.leftPaneListener++ ;我是笨逼 我不会加一
+
         ChatController.leftPaneListener.setValue(ChatController.leftPaneListener.getValue()+1);
         ChatController.changeType = "";//修改左边界面的原因：1新增用户 2用户下线 3用户发来消息
         ChatController.memberName = "";//改变的那个用户的名字
         //更新信息界面
     }
 
-
+/*
 
     public static void main(String[] args) throws UnknownHostException, IOException {
         socket = new Socket("169.254.73.36", 12705);//端口号？
 
     }
+
+ */
 }
