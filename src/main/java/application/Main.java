@@ -15,6 +15,7 @@ public class Main extends Application {
         ChangeService.stage = primaryStage;
         try {
             FXMLLoader loader = new FXMLLoader();
+            System.out.println(getClass().getResource("/view/login.fxml"));
             loader.setLocation(getClass().getResource("/view/login.fxml"));
             Parent root = (Parent)loader.load();
             Scene scene = new Scene(root);

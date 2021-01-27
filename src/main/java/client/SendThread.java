@@ -24,9 +24,9 @@ public class SendThread extends Thread {
     }
     public SendThread(int typeID,String user1_,String user2_,String message_){//发送信息时使用的构造函数
         this.type = typeID;
-        this.user1 = user1_;
-        this.user2 = user2_;
-        this.message = message_;
+        this.user1 = user1_;//发给谁
+        this.user2 = user2_;//谁发的
+        this.message = message_;//发什么
     }
     public SendThread(int typeID,String user1_){//登出时使用的构造函数
         this.type = typeID;

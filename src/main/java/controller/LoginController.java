@@ -56,7 +56,6 @@ public class LoginController  {
 		} else {
 			System.out.println("login failed");
 		}
-
 	}
 
 	@FXML

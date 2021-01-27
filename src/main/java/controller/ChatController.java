@@ -64,6 +64,8 @@ public class ChatController  implements Initializable {
                 }
             }
         });
+
+        System.out.println("这里确实是有吧Vvale设置成1了的");
         scrollPane_history.setVvalue(1);
 
         //左边界面添加监听器
@@ -72,10 +74,11 @@ public class ChatController  implements Initializable {
 
 
     public void addMessageBox(String[] message) {//socket要给我一个数组里面存了谁发的，发给谁，发什么。调用这个方法就可以实现消息盒子的更新了
+        System.out.println("进来addmessageBOx了mamam?????");
         Label messageFromWho = new Label(message[0]);
         messageFromWho.setWrapText(true);
         messageFromWho.setMaxWidth(220);
-
+        HBox.setMargin(messageFromWho, new Insets(8, 0, 0, 0));
 
         Label messageBubble = new Label(message[2]);
         messageBubble.setWrapText(true);
@@ -103,6 +106,7 @@ public class ChatController  implements Initializable {
 
         Polygon triangle = new Polygon(points);
         triangle.setFill(Color.rgb(179, 231, 244));
+
         HBox messageBox = new HBox();
         messageBox.setPrefWidth(366);
         messageBox.setPadding(new Insets(10, 5, 10, 5));
@@ -116,8 +120,13 @@ public class ChatController  implements Initializable {
             messageBox.getChildren().addAll(messageFromWho, triangle, messageBubble);
         }
 
-        last = scrollPane_history.getVvalue() == 1.0;
-        messageList.getChildren().add(messageBox);
+
+            System.out.println("scrollPane_history.getVvalue()"+scrollPane_history.getVvalue());
+                last =(scrollPane_history.getVvalue() == 1.0);
+                 System.out.println("我来到添加之前的这一句了！");
+                messageList.getChildren().add(messageBox);
+
+
     }
 
 
