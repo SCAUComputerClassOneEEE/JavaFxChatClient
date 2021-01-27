@@ -128,13 +128,18 @@ public class ChatController  implements Initializable {
 
     //整型监听器，每当用户列表改变时，这个变量+1，就可以触发监听线程
     public static SimpleObjectProperty<Integer> leftPaneListener = new SimpleObjectProperty<Integer>(0);
-    public static String memberName = null;//修改左边界面的原因：1新增用户 2用户下线 3用户发来消息
-    public static String changeType = null;//改变的那个用户的名字
+    public static String memberName = "all";//修改左边界面的原因：1新增用户 2用户下线 3用户发来消息
+    public static String changeType = "收到消息";//改变的那个用户的名字
 
     /**
      * 给leftPaneListener添加监听器
      */
     private void addListener2leftPaneListener() {
+        Platform.runLater(()-> {
+            Button all = new Button("all");
+            memberNameList.add(all);
+            fillMember(null);
+        });
         leftPaneListener.addListener(((observable, oldValue, newValue) -> {
             Platform.runLater(this::upDateLeftPane);
         }));
@@ -143,7 +148,7 @@ public class ChatController  implements Initializable {
     /*
     假定有一个存放所有user名字的list
      */
-    private final ArrayList<Button> memberNameList = new ArrayList<>(Collections.singletonList(new Button("all")));
+    private final ArrayList<Button> memberNameList = new ArrayList<>();
 
     private void upDateLeftPane() {
         /*
@@ -179,12 +184,14 @@ public class ChatController  implements Initializable {
         //先清空所有节点
         leftPane.getChildren().clear();
         for (Button eachMember : memberNameList) {
-            eachMember.setStyle("-fx-background-color: gray");
-            if (changeType.equals("收到消息") && eachMember.getText().equals(memberName)) {
-                eachMember.setStyle("-fx-background-color: red");
+            eachMember.setPrefWidth(leftPane.getPrefWidth());
+            eachMember.setStyle("-fx-background-color: White");
+            if (memberName!=null && changeType.equals("收到消息") && eachMember.getText().equals(memberName)) {
+                eachMember.setStyle("-fx-background-color: #ffb700");
             }
             eachMember.setOnAction(event -> {
-                eachMember.setStyle("-fx-background-color: gray");
+                eachMember.setStyle("-fx-background-color: white");
+                System.out.println("click"+eachMember);
                 // eachMember.getText();
                 /*
                 这里用于点击事件，加载聊天框

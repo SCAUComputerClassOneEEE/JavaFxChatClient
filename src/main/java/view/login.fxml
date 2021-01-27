@@ -7,16 +7,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
-      <TextField fx:id="text_password" layoutX="223.0" layoutY="185.0" />
       <Text layoutX="127.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
       <Text layoutX="128.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" />
       <TextField fx:id="text_username" layoutX="223.0" layoutY="130.0" />
+      <PasswordField fx:id="text_password" layoutX="223.0" layoutY="185.0" />
       <Text layoutX="265.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="login">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>
       </Text>
-      <Button fx:id="btn_clear" layoutX="443.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#clear" text="clear" />
       <Button fx:id="btn_login" layoutX="356.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#login" text="login" />
+      <Button fx:id="btn_clear" layoutX="443.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#clear" text="clear" />
+
    </children>
 </AnchorPane>

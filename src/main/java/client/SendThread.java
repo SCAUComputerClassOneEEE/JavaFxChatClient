@@ -68,7 +68,7 @@ public class SendThread extends Thread {
 
     public void sendLogIn() {
         try {
-            SendThread.socket = new Socket("169.254.73.36", 12705);
+            SendThread.socket = new Socket("localhost", 12705);
             ReceiveThread.socket = SendThread.socket;
             PrintWriter pw = new PrintWriter(socket.getOutputStream());
             pw.write("N,"+userName+","+password);
