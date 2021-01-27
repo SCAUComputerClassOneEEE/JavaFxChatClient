@@ -42,6 +42,9 @@ public class LoginController  {
 		ReceiveThread receiveThread = new ReceiveThread();
 		receiveThread.start();
 		sendThread1.sendLogIn();
+		/**
+		 * 先接受服务器的回信再进入Chat
+		 */
         new OpenAction(ChangeService.stage);
 	}
 
