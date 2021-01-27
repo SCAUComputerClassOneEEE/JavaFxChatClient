@@ -1,6 +1,7 @@
 package controller;
 
 import client.OpenAction;
+import client.SendThread;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
@@ -128,9 +129,10 @@ public class ChatController  implements Initializable {
 
     //整型监听器，每当用户列表改变时，这个变量+1，就可以触发监听线程
     public static SimpleObjectProperty<Integer> leftPaneListener = new SimpleObjectProperty<Integer>(0);
-    public static String memberName = "all";//修改左边界面的原因：1新增用户 2用户下线 3用户发来消息
-    public static String changeType = "收到消息";//改变的那个用户的名字
+    public static String memberName = null;//修改左边界面的原因：1新增用户 2用户下线 3用户发来消息
+    public static String changeType = null;//改变的那个用户的名字
 
+    public static String receiver = "all";
     /**
      * 给leftPaneListener添加监听器
      */
@@ -156,8 +158,15 @@ public class ChatController  implements Initializable {
          */
         //处理节点位置
         switch (changeType) {
-            case "用户上线"://新增
-                memberNameList.add(1, new Button(memberName));
+            case "用户上线":
+                System.out.println("memberName="+memberName);//lyx,
+                String[] onlineUserList = memberName.split(",");//onlineUserList是在线用户列表，用于初始化
+                onlineUserList[onlineUserList.length-1] = "";
+                for(String each:onlineUserList){
+                    if (each.equals(""))continue;
+                    System.out.println("name="+each);
+                    memberNameList.add(new Button(each));
+                }
                 break;
             case "用户下线"://移除
                 memberNameList.removeIf(each -> each.getText().equals(memberName));
@@ -190,8 +199,9 @@ public class ChatController  implements Initializable {
                 eachMember.setStyle("-fx-background-color: #ffb700");
             }
             eachMember.setOnAction(event -> {
+                receiver = eachMember.getText();
                 eachMember.setStyle("-fx-background-color: white");
-                System.out.println("click"+eachMember);
+                System.out.println("click"+eachMember.getText());
                 // eachMember.getText();
                 /*
                 这里用于点击事件，加载聊天框
@@ -202,4 +212,12 @@ public class ChatController  implements Initializable {
         }
     }
 
+    @FXML
+    private void send(){
+        String message =  text_input.getText();
+        text_input.setText("");
+        System.out.println(MyId+","+receiver+","+message);
+        SendThread sendThread = new SendThread(2,receiver,MyId,message);
+        sendThread.sendMessage();
+    }
 }

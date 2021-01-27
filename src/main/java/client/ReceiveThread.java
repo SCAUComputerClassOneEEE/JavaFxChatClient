@@ -1,6 +1,9 @@
 package client;
 
 import controller.ChatController;
+import javafx.application.Platform;
+import service.ChangeService;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -34,22 +37,21 @@ public class ReceiveThread extends Thread {
                         updataChat(str);
                     }
                     else if (str.startsWith("N")) {//登入信息
+                        System.out.println("str="+str);
                         logIn(str);
-
                     }else if (str.startsWith("W")){//下线信息
                         offLine(str);
                     }
                 }
             }
 
-        }
-        catch (IOException e) {
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
-    private void logIn(String str) {
+    private void logIn(String str) throws Exception {
         synchronized (ReceiveThread.class) {
             if(str.equals("N,N")){
                 isLoginSuccess = false;
@@ -57,12 +59,15 @@ public class ReceiveThread extends Thread {
                 //显示登录失败信息
 
             }else {//初始化在线用户
-                str = str.substring(2,str.length());//删除标识  N,
-                String[] onlineUserList = str.split(",");//onlineUserList是在线用户列表，用于初始化
+                str = str.substring(2);//删除标识  N,
+                //String[] onlineUserList = str.split(",");//onlineUserList是在线用户列表，用于初始化
                 isLoginSuccess = true;
                 ReceiveThread.class.notifyAll();
                 //登录成功，显示上线信息
+                ChatController.memberName = str;
                 ChatController.changeType = "用户上线";
+                System.out.println("111");
+                ChatController.leftPaneListener.setValue(ChatController.leftPaneListener.getValue()+1);
             }
         }
     }

@@ -4,6 +4,7 @@ import client.OpenAction;
 import client.ReceiveThread;
 import client.SendThread;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
@@ -48,7 +49,7 @@ public class LoginController  {
 				ReceiveThread.class.wait();
 			}
 			if (ReceiveThread.isLogin()){
-				new OpenAction(ChangeService.stage);
+				OpenAction.show();
 			} else {
 				System.out.println("login failed");
 			}

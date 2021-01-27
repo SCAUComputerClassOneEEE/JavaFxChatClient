@@ -1,5 +1,8 @@
 package client;
 
+import javafx.application.Platform;
+import service.ChangeService;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -54,7 +57,7 @@ public class SendThread extends Thread {
 
     }
 
-    private void sendMessage() {
+    public void sendMessage() {
         try {
             PrintWriter pw = new PrintWriter(socket.getOutputStream());
             pw.write("Y,"+user1+","+user2+","+message);
@@ -68,6 +71,8 @@ public class SendThread extends Thread {
 
     public void sendLogIn() {
         try {
+            new OpenAction(ChangeService.stage);
+
             SendThread.socket = new Socket("localhost", 12705);
             ReceiveThread.socket = SendThread.socket;
             PrintWriter pw = new PrintWriter(socket.getOutputStream());
@@ -80,6 +85,8 @@ public class SendThread extends Thread {
             // TODO Auto-generated catch block
             //e.printStackTrace();
             System.err.println("connection refuse!");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 /*
