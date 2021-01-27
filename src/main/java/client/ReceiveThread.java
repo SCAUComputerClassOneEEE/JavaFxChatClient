@@ -52,6 +52,7 @@ public class ReceiveThread extends Thread {
             String[] olineUserList = str.split(",");//olineUserList是在线用户列表，用于初始化
 
             //登录成功，显示上线信息
+            ChatController.changeType = "用户上线";
         }
     }
 
@@ -60,6 +61,7 @@ public class ReceiveThread extends Thread {
         //此时str是下线的用户的标识
 
         //显示下线信息
+        ChatController.changeType = "用户下线";
     }
 
     private void updataChat(String str) {
