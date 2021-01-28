@@ -9,7 +9,7 @@
    <children>
       <VBox fx:id="leftPane" prefHeight="626.0" prefWidth="336.0" />
       <TextArea fx:id="text_input" layoutX="346.0" layoutY="445.0" prefHeight="180.0" prefWidth="638.0" text="input.............." />
-      <Button fx:id="btn_send" onAction="#send" layoutX="923.0" layoutY="677.0" mnemonicParsing="false" text="send" AnchorPane.leftAnchor="923.0" />
+      <Button fx:id="btn_send" layoutX="923.0" layoutY="677.0" mnemonicParsing="false" onAction="#send" text="send" AnchorPane.leftAnchor="923.0" />
       <ScrollPane fx:id="scrollPane_history" layoutX="346.0" layoutY="2.0" prefHeight="443.0" prefWidth="638.0">
          <content>
             <FlowPane fx:id="messageList" prefHeight="45.0" prefWidth="366.0" />

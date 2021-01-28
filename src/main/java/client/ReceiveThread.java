@@ -101,11 +101,11 @@ public class ReceiveThread extends Thread {
         for (String s:message){
             System.out.println("message["+i+"]是："+s);
         }
-        if (message[0].equals("all")){
+        if (message[0].equals("ALL")){
             System.out.println("大厅消息");
-            ChatController.message = message;//all,lyx,1
+            ChatController.message = message;//ALL,lyx,1
             ChatController.changeType = "收到消息";//修改左边界面的原因：1新增用户 2用户下线 3用户发来消息
-            ChatController.memberName = "all";
+            ChatController.memberName = "ALL";
             ChatController.leftPaneListener.setValue(ChatController.leftPaneListener.getValue()+1);
         }else {
             //更新信息界面

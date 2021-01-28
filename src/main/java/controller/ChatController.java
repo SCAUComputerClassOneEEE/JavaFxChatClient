@@ -131,7 +131,7 @@ public class ChatController  implements Initializable {
                 triangle.setFill(Color.rgb(179, 231, 244));
 
                 HBox messageBox = new HBox();
-                messageBox.setPrefWidth(366);
+                messageBox.setPrefWidth(605);
                 messageBox.setPadding(new Insets(10, 5, 10, 5));
 
                 if (isMine) {
@@ -164,14 +164,14 @@ public class ChatController  implements Initializable {
     public static String memberName = null;//修改左边界面的原因：1新增用户 2用户下线 3用户发来消息
     public static String changeType = null;//改变的那个用户的名字
 
-    public static String receiver = "all";
+    public static String receiver = "ALL";
     /**
      * 给leftPaneListener添加监听器
      */
     private void addListener2leftPaneListener() {
         Platform.runLater(()-> {
-            Member all = new Member("all");
-            memberNameList.add(all);
+            Member ALL = new Member("ALL");
+            memberNameList.add(ALL);
             fillMember(null);
         });
         leftPaneListener.addListener(((observable, oldValue, newValue) -> {
@@ -209,7 +209,7 @@ public class ChatController  implements Initializable {
             case "收到消息"://移到前面
                 for (Member each:memberNameList){
                     if (memberName.equals(each.getText())){
-                        if (! memberName.equals("all")){
+                        if (! memberName.equals("ALL")){
                             memberNameList.remove(each);
                             memberNameList.add(1,each);
                         }
@@ -234,12 +234,12 @@ public class ChatController  implements Initializable {
         leftPane.getChildren().clear();
         for (Member eachMember : memberNameList) {
             eachMember.setPrefWidth(leftPane.getPrefWidth());
-            eachMember.setStyle("-fx-background-color: White");
+            eachMember.setStyle("-fx-background-color: #ffd4d5");
             if (memberName!=null && changeType.equals("收到消息") && eachMember.getText().equals(memberName)) {
                 /*
                 找到对应的接受者的Member对象
                  */
-                eachMember.setStyle("-fx-background-color: #ffb700");
+                eachMember.setStyle("-fx-background-color: #aa6c8e");
                 /*
                 添加记录
                  */
