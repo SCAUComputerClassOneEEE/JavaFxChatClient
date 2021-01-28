@@ -72,8 +72,9 @@ public class ChatController  implements Initializable {
         addListener2leftPaneListener();
     }
 
-
-    public void addMessageBox(String[] message) {//socket要给我一个数组里面存了谁发的，发给谁，发什么。调用这个方法就可以实现消息盒子的更新了
+    public static String[] message = null;
+    
+    public void addMessageBox() {//socket要给我一个数组里面存了谁发的，发给谁，发什么。调用这个方法就可以实现消息盒子的更新了
         System.out.println("进来addmessageBOx了mamam?????");
         Label messageFromWho = new Label(message[0]);
         messageFromWho.setWrapText(true);
@@ -216,6 +217,9 @@ public class ChatController  implements Initializable {
                 这里用于点击事件，加载聊天框
                  */
                 messageList.getChildren().clear();
+                if (message!=null){
+                    addMessageBox();
+                }
             });
             leftPane.getChildren().add(eachMember);
         }

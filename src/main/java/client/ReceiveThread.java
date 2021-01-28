@@ -101,7 +101,7 @@ public class ReceiveThread extends Thread {
             System.out.println("message["+i+"]是："+s);
         }
 
-        ChangeService.chatController.addMessageBox(message);
+        ChatController.message = message;
 
         ChatController.leftPaneListener.setValue(ChatController.leftPaneListener.getValue()+1);
         ChatController.changeType = "";//修改左边界面的原因：1新增用户 2用户下线 3用户发来消息
