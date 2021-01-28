@@ -18,7 +18,11 @@ public class Member extends Button {
         //this.setStyle("-fx-background-color: white");
         this.setOnAction(event -> {
             ChatController.receiver = this.getText();
-            this.setStyle("-fx-background-color: #d696af");
+            this.setStyle("-fx-background-color: #d696af");//点击
+            for(Member m:ChatController.memberNameList){
+                   if(m.getText()!=ChatController.receiver)
+                    m.setStyle("-fx-background-color: #ffd4d5");
+            }
             System.out.println("click "+this.getText());
             /*
             点击用户的事件

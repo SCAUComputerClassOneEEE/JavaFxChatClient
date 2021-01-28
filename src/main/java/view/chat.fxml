@@ -1,19 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="740.0" prefWidth="1039.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChatController">
+<AnchorPane prefHeight="740.0" prefWidth="1039.0" style="-fx-background-color: FFEADC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChatController">
    <children>
-      <VBox fx:id="leftPane" prefHeight="626.0" prefWidth="336.0" />
-      <TextArea fx:id="text_input" layoutX="346.0" layoutY="445.0" prefHeight="180.0" prefWidth="638.0" text="input.............." />
-      <Button fx:id="btn_send" layoutX="923.0" layoutY="677.0" mnemonicParsing="false" onAction="#send" text="send" AnchorPane.leftAnchor="923.0" />
-      <ScrollPane fx:id="scrollPane_history" layoutX="346.0" layoutY="2.0" prefHeight="443.0" prefWidth="638.0">
+      <VBox fx:id="leftPane" prefHeight="553.0" prefWidth="346.0" />
+      <TextArea fx:id="text_input" layoutX="346.0" layoutY="445.0" prefHeight="180.0" prefWidth="638.0" style="-fx-border-color: FFEADC;" />
+      <Button fx:id="btn_send" layoutX="927.0" layoutY="649.0" mnemonicParsing="false" onAction="#send" prefHeight="71.0" prefWidth="94.0" style="-fx-background-color: FFEADC;" AnchorPane.leftAnchor="927.0">
+         <graphic>
+            <ImageView fitHeight="85.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@picture/send.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <ScrollPane fx:id="scrollPane_history" layoutX="346.0" layoutY="2.0" prefHeight="443.0" prefWidth="638.0" style="-fx-background-color: FFEADC;">
          <content>
             <FlowPane fx:id="messageList" prefHeight="45.0" prefWidth="366.0" />
          </content>
       </ScrollPane>
+      <ImageView fitHeight="89.0" fitWidth="88.0" layoutX="96.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picture/flower1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="89.0" fitWidth="88.0" layoutX="175.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picture/flower1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="89.0" fitWidth="88.0" layoutX="256.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picture/flower1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="89.0" fitWidth="88.0" layoutX="334.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picture/flower1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="89.0" fitWidth="88.0" layoutX="413.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picture/flower1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="89.0" fitWidth="88.0" layoutX="495.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picture/flower1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="89.0" fitWidth="88.0" layoutX="577.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picture/flower1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="89.0" fitWidth="88.0" layoutX="656.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picture/flower1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="89.0" fitWidth="88.0" layoutX="733.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picture/flower1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="89.0" fitWidth="88.0" layoutX="811.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picture/flower1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="71.0" fitWidth="69.0" layoutX="-20.0" layoutY="577.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="89.0" fitWidth="88.0" layoutX="26.0" layoutY="655.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picture/flower1.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

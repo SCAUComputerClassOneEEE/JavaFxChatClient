@@ -1,23 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFEADC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
-      <Text layoutX="127.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" />
-      <Text layoutX="128.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" />
-      <TextField fx:id="text_username" layoutX="223.0" layoutY="130.0" />
-      <PasswordField fx:id="text_password" layoutX="223.0" layoutY="185.0" />
+      <TextField fx:id="text_username" layoutX="203.0" layoutY="130.0" prefHeight="30.0" prefWidth="221.0" />
+      <PasswordField fx:id="text_password" layoutX="203.0" layoutY="208.0" prefHeight="30.0" prefWidth="221.0" />
       <Text layoutX="265.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="login">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>
       </Text>
-      <Button fx:id="btn_login" layoutX="356.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#login" text="login" />
-      <Button fx:id="btn_clear" layoutX="443.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#clear" text="clear" />
+      <Button fx:id="btn_login" layoutX="397.0" layoutY="266.0" mnemonicParsing="false" onMouseClicked="#login" prefHeight="80.0" prefWidth="86.0" style="-fx-background-color: FFEADC;">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@picture/send2.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btn_clear" layoutX="496.0" layoutY="266.0" mnemonicParsing="false" onMouseClicked="#clear" prefHeight="86.0" prefWidth="86.0" style="-fx-background-color: FFEADC;">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@picture/clear.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <ImageView fitHeight="68.0" fitWidth="83.0" layoutX="117.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picture/user.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="68.0" fitWidth="83.0" layoutX="117.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picture/password.png" />
+         </image>
+      </ImageView>
 
    </children>
 </AnchorPane>

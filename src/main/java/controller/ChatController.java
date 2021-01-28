@@ -182,7 +182,7 @@ public class ChatController  implements Initializable {
     /*
     假定有一个存放所有user名字的list
      */
-    private final ArrayList<Member> memberNameList = new ArrayList<>();
+    public static final ArrayList<Member> memberNameList = new ArrayList<>();
 
     private void upDateLeftPane() {
         /*
@@ -239,7 +239,7 @@ public class ChatController  implements Initializable {
                 /*
                 找到对应的接受者的Member对象
                  */
-                eachMember.setStyle("-fx-background-color: #aa6c8e");
+                eachMember.setStyle("-fx-background-color: #aa6c8e");//收到消息
                 /*
                 添加记录
                  */
