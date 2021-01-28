@@ -47,6 +47,7 @@ public class LoginController  {
 		if (ReceiveThread.socket != null){
 			synchronized (ReceiveThread.class) {
 				ReceiveThread.class.wait();
+				System.out.println("not wait");
 			}
 			if (ReceiveThread.isLogin()){
 				OpenAction.show();

@@ -9,6 +9,7 @@ import service.ChangeService;
 public class OpenAction {
 
 
+
     public  OpenAction(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/chat.fxml"));
@@ -19,5 +20,9 @@ public class OpenAction {
 
     public static void show(){
         ChangeService.stage.show();
+    }
+
+    public static void close(){
+        ChangeService.stage.close();
     }
 }

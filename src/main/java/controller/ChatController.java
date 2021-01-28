@@ -98,20 +98,21 @@ public class ChatController  implements Initializable {
             messageList.getChildren().clear();
             for(String[] message:member.chatRecord){
                 System.out.println("进来addmessageBOx了mamam?????");
-                Label messageFromWho = new Label(message[0]);
+                Label messageFromWho = new Label(message[1]);
                 messageFromWho.setWrapText(true);
                 messageFromWho.setMaxWidth(220);
                 HBox.setMargin(messageFromWho, new Insets(8, 0, 0, 0));
 
-                Label messageBubble = new Label(message[2]);
+                Label messageBubble = new Label(message[2].trim());
                 messageBubble.setWrapText(true);
                 messageBubble.setMaxWidth(220);
                 messageBubble.setStyle("-fx-background-color: rgb(179,231,244); -fx-background-radius: 8px;");
                 messageBubble.setPadding(new Insets(6));
+                //messageBubble.setPrefHeight(10);
                 messageBubble.setFont(new Font(14));
                 HBox.setMargin(messageBubble, new Insets(8, 0, 0, 0));
 
-                boolean isMine = message[1] == MyId;
+                boolean isMine = message[1].equals(MyId);
                 double[] points;
                 if (!isMine) {
                     points = new double[]{
@@ -141,6 +142,7 @@ public class ChatController  implements Initializable {
                 } else {
                     HBox.setMargin(triangle, new Insets(15, 0, 0, 10));
                     messageBox.getChildren().addAll(messageFromWho, triangle, messageBubble);
+                    messageBox.setAlignment(Pos.TOP_LEFT);
                 }
 
 
@@ -171,6 +173,7 @@ public class ChatController  implements Initializable {
     private void addListener2leftPaneListener() {
         Platform.runLater(()-> {
             Member ALL = new Member("ALL");
+            ALL.setStyle("-fx-background-color: #d696af");//点击
             memberNameList.add(ALL);
             fillMember(null);
         });
@@ -234,18 +237,22 @@ public class ChatController  implements Initializable {
         leftPane.getChildren().clear();
         for (Member eachMember : memberNameList) {
             eachMember.setPrefWidth(leftPane.getPrefWidth());
-            eachMember.setStyle("-fx-background-color: #ffd4d5");
+            if (!eachMember.getText().equals(receiver)){
+                eachMember.setStyle("-fx-background-color: #ffd4d5");
+            }
             if (memberName!=null && changeType.equals("收到消息") && eachMember.getText().equals(memberName)) {
                 /*
-                找到对应的接受者的Member对象
+                当前就处在对话框中
                  */
-                eachMember.setStyle("-fx-background-color: #aa6c8e");//收到消息
-                /*
-                添加记录
-                 */
-                /*if (message!=null){
-                    addMessageBox();
-                }*/
+                if(memberName.equals(receiver)){
+                    /*
+                    通知chatMessage更新
+                     */
+                    updateChat.setValue(updateChat.getValue()+1);
+                }
+                else{
+                    eachMember.setStyle("-fx-background-color: #aa6c8e");//收到消息
+                }
             }
             //将所有Member加入左边的列表进行显示
             leftPane.getChildren().add(eachMember);
