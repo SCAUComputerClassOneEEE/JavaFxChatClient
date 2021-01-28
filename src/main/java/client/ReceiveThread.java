@@ -24,10 +24,11 @@ public class ReceiveThread extends Thread {
     }
 
     public void run() {
+
         try {
             System.out.println("进来recieve的run方法了");
-            InputStream in = socket.getInputStream();
             BufferedReader reader;
+            InputStream in = socket.getInputStream();
             reader = new BufferedReader(new InputStreamReader(in));
             String str;
             char[] temp = new char[256];
@@ -100,13 +101,20 @@ public class ReceiveThread extends Thread {
         for (String s:message){
             System.out.println("message["+i+"]是："+s);
         }
-
-        ChatController.message = message;
-
-        ChatController.leftPaneListener.setValue(ChatController.leftPaneListener.getValue()+1);
-        ChatController.changeType = "";//修改左边界面的原因：1新增用户 2用户下线 3用户发来消息
-        ChatController.memberName = "";//改变的那个用户的名字
-        //更新信息界面
+        if (message[0].equals("all")){
+            System.out.println("大厅消息");
+            ChatController.message = message;//all,lyx,1
+            ChatController.changeType = "收到消息";//修改左边界面的原因：1新增用户 2用户下线 3用户发来消息
+            ChatController.memberName = "all";
+            ChatController.leftPaneListener.setValue(ChatController.leftPaneListener.getValue()+1);
+        }else {
+            //更新信息界面
+            ChatController.message = message;
+            ChatController.changeType = "收到消息";//修改左边界面的原因：1新增用户 2用户下线 3用户发来消息
+            ChatController.memberName = message[1];//改变的那个用户的名字
+            //触发监听器
+            ChatController.leftPaneListener.setValue(ChatController.leftPaneListener.getValue()+1);
+        }
     }
 
 /*
